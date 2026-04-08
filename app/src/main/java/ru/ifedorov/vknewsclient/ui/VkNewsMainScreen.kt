@@ -30,7 +30,9 @@ import kotlinx.coroutines.launch
 @Preview
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
-    val snackbarHostState = SnackbarHostState()
+    val snackbarHostState = remember { SnackbarHostState() }
+    Log.d("MainScreen", snackbarHostState.currentSnackbarData.toString())
+
     val scope = rememberCoroutineScope()
     var isFabVisible by remember { mutableStateOf(true) }
 
