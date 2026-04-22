@@ -36,7 +36,10 @@ import ru.ifedorov.vknewsclient.domain.StatisticType
 fun PostCard(
     modifier: Modifier = Modifier,
     feedPost: FeedPost,
-    onStatisticsItemClick: (StatisticItem) -> Unit
+    onLikeClick: (StatisticItem) -> Unit,
+    onShareClick: (StatisticItem) -> Unit,
+    onViewsClick: (StatisticItem) -> Unit,
+    onCommentClick: (StatisticItem) -> Unit
 ) {
     Card(
         modifier = modifier,
@@ -62,9 +65,18 @@ fun PostCard(
             Spacer(modifier = Modifier.height(8.dp))
             Statistics(
                 statistics = feedPost.statistics,
-                onItemClick = { item ->
-                    onStatisticsItemClick(item)
-                }
+                onLikeClick = {
+                    onLikeClick(it)
+                },
+                onShareClick = {
+                    onShareClick(it)
+                },
+                onViewsClick = {
+                    onViewsClick(it)
+                },
+                onCommentClick = {
+                    onCommentClick(it)
+                },
             )
         }
     }
@@ -107,9 +119,12 @@ private fun PostHeader(feedPost: FeedPost) {
 }
 
 @Composable
-fun Statistics(
+private fun Statistics(
     statistics: List<StatisticItem>,
-    onItemClick: (StatisticItem) -> Unit
+    onLikeClick: (StatisticItem) -> Unit,
+    onShareClick: (StatisticItem) -> Unit,
+    onViewsClick: (StatisticItem) -> Unit,
+    onCommentClick: (StatisticItem) -> Unit
 ) {
     Row {
         Row(
@@ -121,7 +136,7 @@ fun Statistics(
                 iconResId = R.drawable.ic_views_count,
                 text = viewsItem.count.toString(),
                 onItemClick = {
-                    onItemClick(viewsItem)
+                    onViewsClick(viewsItem)
                 }
             )
         }
@@ -134,7 +149,7 @@ fun Statistics(
                 iconResId = R.drawable.ic_share,
                 text = sharesItem.count.toString(),
                 onItemClick = {
-                    onItemClick(sharesItem)
+                    onShareClick(sharesItem)
                 }
             )
 
@@ -143,7 +158,7 @@ fun Statistics(
                 iconResId = R.drawable.ic_comment,
                 text = commentItem.count.toString(),
                 onItemClick = {
-                    onItemClick(commentItem)
+                    onCommentClick(commentItem)
                 }
             )
 
@@ -152,7 +167,7 @@ fun Statistics(
                 iconResId = R.drawable.ic_like,
                 text = likesItem.count.toString(),
                 onItemClick = {
-                    onItemClick(likesItem)
+                    onLikeClick(likesItem)
                 }
             )
         }
