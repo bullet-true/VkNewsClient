@@ -10,22 +10,22 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ru.ifedorov.vknewsclient.MainViewModel
 import ru.ifedorov.vknewsclient.domain.FeedPost
 
-@Preview
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
-    val feedPost = remember {
-        mutableStateOf(FeedPost())
-    }
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    viewModel: MainViewModel
+) {
+    val feedPost = viewModel.feedPost.observeAsState(FeedPost())
 
     Scaffold(
         bottomBar = {
@@ -66,19 +66,16 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 .padding(paddingValues)
                 .padding(8.dp),
             feedPost = feedPost.value,
-            onStatisticsItemClick = { newItem ->
-                val oldStatistics = feedPost.value.statistics
-                val newStatistics = oldStatistics.toMutableList().apply {
-                    replaceAll { oldItem ->
-                        if (oldItem.type == newItem.type) {
-                            oldItem.copy(count = oldItem.count + 1)
-                        } else {
-                            oldItem
-                        }
-                    }
-                }
-                feedPost.value = feedPost.value.copy(statistics = newStatistics)
-            }
+            onLikeClick = viewModel::updateCount,
+            onShareClick = {
+                viewModel.updateCount(it)
+            },
+            onViewsClick = {
+                viewModel.updateCount(it)
+            },
+            onCommentClick = {
+                viewModel.updateCount(it)
+            },
         )
     }
 }
