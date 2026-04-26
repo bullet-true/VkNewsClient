@@ -3,6 +3,7 @@ package ru.ifedorov.vknewsclient.domain
 import ru.ifedorov.vknewsclient.R
 
 data class FeedPost(
+    val id: Int = 0,
     val communityName: String = "/dev/android",
     val publicationData: String = "12:12",
     val avatarResId: Int = R.drawable.post_comunity_thumbnail,
