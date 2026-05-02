@@ -35,8 +35,7 @@ import ru.ifedorov.vknewsclient.ui.theme.VKNewsClientTheme
 @Composable
 fun CommentsScreen(
     feedPost: FeedPost,
-    comments: List<PostComment>,
-    modifier: Modifier = Modifier
+    comments: List<PostComment>
 ) {
     Scaffold(
         topBar = {
