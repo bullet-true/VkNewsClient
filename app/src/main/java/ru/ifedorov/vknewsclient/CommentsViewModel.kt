@@ -7,13 +7,15 @@ import ru.ifedorov.vknewsclient.domain.FeedPost
 import ru.ifedorov.vknewsclient.domain.PostComment
 import ru.ifedorov.vknewsclient.ui.CommentsScreenState
 
-class CommentsViewModel : ViewModel() {
+class CommentsViewModel(
+    feedPost: FeedPost
+) : ViewModel() {
 
     private val _screenState = MutableLiveData<CommentsScreenState>(CommentsScreenState.Initial)
     val screenState: LiveData<CommentsScreenState> = _screenState
 
     init {
-        loadComments(FeedPost())
+        loadComments(feedPost)
     }
 
     fun loadComments(feedPost: FeedPost) {
