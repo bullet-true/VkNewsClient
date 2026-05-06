@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ru.ifedorov.vknewsclient.domain.FeedPost
 import ru.ifedorov.vknewsclient.navigation.AppNvGraph
+import ru.ifedorov.vknewsclient.navigation.Screen
 import ru.ifedorov.vknewsclient.navigation.rememberNavigationState
 
 @Composable
@@ -71,23 +72,23 @@ fun MainScreen(modifier: Modifier = Modifier) {
 
         AppNvGraph(
             navHostController = navigationState.navHostController,
-            homeScreenContent = {
-                if (commentsToPost.value == null) {
-                    HomeScreen(
-                        paddingValues = paddingValues,
-                        onCommentClick = {
-                            commentsToPost.value = it
-                        }
+            newsFeedScreenContent = {
+                HomeScreen(
+                    paddingValues = paddingValues,
+                    onCommentClick = {
+                        commentsToPost.value = it
+                        navigationState.navigateTo(Screen.Comments.route)
+                    }
 
-                    )
-                } else {
-                    CommentsScreen (
-                        onBackPressed = {
-                            commentsToPost.value = null
-                        },
-                        feedPost = commentsToPost.value!!
-                    )
-                }
+                )
+            },
+            commentsScreenContent = {
+                CommentsScreen(
+                    onBackPressed = {
+                        commentsToPost.value = null
+                    },
+                    feedPost = commentsToPost.value!!
+                )
             },
             favoriteScreenContent = { TextCounter("Favorite") },
             profileScreenContent = { TextCounter("Profile") }
