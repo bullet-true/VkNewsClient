@@ -1,7 +1,9 @@
 package ru.ifedorov.vknewsclient.domain
 
+import kotlinx.serialization.Serializable
 import ru.ifedorov.vknewsclient.R
 
+@Serializable
 data class FeedPost(
     val id: Int = 0,
     val communityName: String = "/dev/android",
