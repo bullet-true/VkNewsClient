@@ -1,14 +1,15 @@
 package ru.ifedorov.vknewsclient.navigation
 
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
+import kotlinx.serialization.json.Json
 import ru.ifedorov.vknewsclient.domain.FeedPost
-import ru.ifedorov.vknewsclient.navigation.Screen.Companion.KEY_CONTENT_TEXT
-import ru.ifedorov.vknewsclient.navigation.Screen.Companion.KEY_FEED_POST_ID
+import ru.ifedorov.vknewsclient.navigation.Screen.Companion.KEY_FEED_POST
 
 fun NavGraphBuilder.homeScreenNavGraph(
     newsFeedScreenContent: @Composable () -> Unit,
@@ -24,21 +25,16 @@ fun NavGraphBuilder.homeScreenNavGraph(
         composable(
             route = Screen.Comments.route,
             arguments = listOf(
-                navArgument(KEY_FEED_POST_ID) {
-                    type = NavType.IntType
-                },
-                navArgument(KEY_CONTENT_TEXT) {
+                navArgument(KEY_FEED_POST) {
                     type = NavType.StringType
-                }
-            )) {
-            val feedPostId = it.arguments?.getInt(KEY_FEED_POST_ID) ?: 0
-            val contentText = it.arguments?.getString(KEY_CONTENT_TEXT) ?: ""
-            commentsScreenContent(
-                FeedPost(
-                    id = feedPostId,
-                    contentText = contentText
-                )
+                },
             )
+        ) {
+            val feedPostJson = it.arguments?.getString(KEY_FEED_POST) ?: ""
+            val decodedJson = Uri.decode(feedPostJson)
+            val feedPost = Json.decodeFromString<FeedPost>(decodedJson)
+
+            commentsScreenContent(feedPost)
         }
     }
 }
