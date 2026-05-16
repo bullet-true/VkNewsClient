@@ -69,4 +69,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.coil.compose)
     implementation("com.vk.id:vkid:2.7.0")
+    implementation("com.vk.id:onetap-compose:2.7.0")
+
 }
