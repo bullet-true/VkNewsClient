@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("vkid.manifest.placeholders")
 }
 
 android {
@@ -42,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -66,4 +68,7 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.coil.compose)
+    implementation("com.vk.id:vkid:2.7.0")
+    implementation("com.vk.id:onetap-compose:2.7.0")
+
 }

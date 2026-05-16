@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.ui.Modifier
-import ru.ifedorov.vknewsclient.ui.ActivityResultTest
-import ru.ifedorov.vknewsclient.ui.MainScreen
+import ru.ifedorov.vknewsclient.ui.LoginScreen
 import ru.ifedorov.vknewsclient.ui.theme.VKNewsClientTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,10 +14,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VKNewsClientTheme {
-//                MainScreen(
-//                    modifier = Modifier.fillMaxWidth()
-//                )
-                ActivityResultTest()
+                LoginScreen()
             }
         }
     }
