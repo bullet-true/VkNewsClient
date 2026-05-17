@@ -1,5 +1,6 @@
 package ru.ifedorov.vknewsclient.ui
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import com.vk.id.onetap.compose.onetap.OneTap
 
 @Composable
 fun LoginScreen(
+    onLoginSuccess: (String) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -19,10 +21,11 @@ fun LoginScreen(
 
         OneTap(
             onAuth = { oAuth, token ->
-                // Использование токена.
+                Log.d("VK_AUTH", token.token)
+                onLoginSuccess(token.token)
             },
             onFail = { oAuth, fail ->
-
+                Log.d("VK_AUTH", fail.description)
             }
         )
     }
