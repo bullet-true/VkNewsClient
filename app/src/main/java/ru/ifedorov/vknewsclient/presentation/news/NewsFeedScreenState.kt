@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient.ui
+package ru.ifedorov.vknewsclient.presentation.news
 
 import ru.ifedorov.vknewsclient.domain.FeedPost
 

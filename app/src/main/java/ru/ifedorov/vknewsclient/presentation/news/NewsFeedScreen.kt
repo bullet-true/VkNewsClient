@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient.ui
+package ru.ifedorov.vknewsclient.presentation.news
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,11 +14,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import ru.ifedorov.vknewsclient.NewsFeedViewModel
 import ru.ifedorov.vknewsclient.domain.FeedPost
 
 @Composable
-fun HomeScreen(
+fun NewsFeedScreen(
     paddingValues: PaddingValues,
     onCommentClick: (FeedPost) -> Unit,
     modifier: Modifier = Modifier,

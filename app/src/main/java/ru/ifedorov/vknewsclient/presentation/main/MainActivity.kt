@@ -1,15 +1,12 @@
-package ru.ifedorov.vknewsclient
+package ru.ifedorov.vknewsclient.presentation.main
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import ru.ifedorov.vknewsclient.ui.AuthState
-import ru.ifedorov.vknewsclient.ui.AuthViewModel
-import ru.ifedorov.vknewsclient.ui.LoginScreen
-import ru.ifedorov.vknewsclient.ui.MainScreen
 import ru.ifedorov.vknewsclient.ui.theme.VKNewsClientTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,7 +16,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             VKNewsClientTheme {
-                val viewModel: AuthViewModel = viewModel()
+                val viewModel: AuthViewModel = viewModel(
+                    factory = AuthViewModelFactory(applicationContext)
+                )
                 val authState = viewModel.authState.collectAsStateWithLifecycle()
 
                 when (authState.value) {
@@ -36,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     }
 
                     AuthState.Initial -> {
-
+                        CircularProgressIndicator()
                     }
                 }
             }

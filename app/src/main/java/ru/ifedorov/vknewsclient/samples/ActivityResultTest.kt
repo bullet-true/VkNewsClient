@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient.ui
+package ru.ifedorov.vknewsclient.samples
 
 
 import android.net.Uri

@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient.test
+package ru.ifedorov.vknewsclient.samples
 
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.padding

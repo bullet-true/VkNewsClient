@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient.ui
+package ru.ifedorov.vknewsclient.presentation.main
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
