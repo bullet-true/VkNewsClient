@@ -68,7 +68,8 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.coil.compose)
-    implementation("com.vk.id:vkid:2.7.0")
-    implementation("com.vk.id:onetap-compose:2.7.0")
+    implementation(libs.vkid)
+    implementation(libs.onetap.compose)
+    implementation(libs.androidx.datastore.preferences)
 
 }

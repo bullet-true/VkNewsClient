@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient.ui
+package ru.ifedorov.vknewsclient.presentation.main
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +22,9 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ru.ifedorov.vknewsclient.navigation.AppNvGraph
 import ru.ifedorov.vknewsclient.navigation.rememberNavigationState
+import ru.ifedorov.vknewsclient.presentation.comments.CommentsScreen
+import ru.ifedorov.vknewsclient.presentation.news.NewsFeedScreen
+import ru.ifedorov.vknewsclient.presentation.main.NavigationItem
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
@@ -71,7 +74,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
         AppNvGraph(
             navHostController = navigationState.navHostController,
             newsFeedScreenContent = {
-                HomeScreen(
+                NewsFeedScreen(
                     paddingValues = paddingValues,
                     onCommentClick = {
                         navigationState.navigateToComments(it)

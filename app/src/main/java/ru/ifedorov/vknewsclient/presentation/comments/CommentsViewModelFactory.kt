@@ -1,4 +1,4 @@
-package ru.ifedorov.vknewsclient
+package ru.ifedorov.vknewsclient.presentation.comments
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
