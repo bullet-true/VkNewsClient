@@ -66,10 +66,20 @@ dependencies {
     implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.material.icons.extended)
+
     implementation(libs.kotlinx.serialization.json)
+
     implementation(libs.coil.compose)
+
     implementation(libs.vkid)
     implementation(libs.onetap.compose)
     implementation(libs.androidx.datastore.preferences)
+
+    implementation(platform(libs.squareup.okhttp.bom))
+    implementation(libs.squareup.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.converter.kotlinx.serialization)
 
 }
